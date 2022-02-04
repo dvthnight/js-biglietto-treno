@@ -20,7 +20,22 @@ console.log(etàUtente);
 // calcolo prezzo totale in base ai chilometri
 
 let prezzoTotale = 0.21 * chilometriUtente;
-console.log(prezzoTotale)
+console.log(prezzoTotale);
 
 // prezzoTotale = prezzoTotale.toFixed(2)
 // console.log(prezzoTotale)
+
+
+const preventivo = document.getElementById("preventivo");
+
+// applico sconto se minore di 18 anni
+
+if(etàUtente <= 18){
+    prezzoTotale = prezzoTotale - (prezzoTotale * 20) / 100;
+}
+
+console.log(prezzoTotale)
+
+
+preventivo.innerHTML = prezzoTotale;
+console.log(preventivo);
