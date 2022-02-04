@@ -17,32 +17,50 @@ console.log(chilometriUtente);
 const etàUtente = prompt("Inserisci la tua età");
 console.log(etàUtente);
 
-// calcolo prezzo totale in base ai chilometri
+// effettuo controlli sulla validità dei chilometri inseriti
 
-let prezzoTotale = 0.21 * chilometriUtente;
-console.log(prezzoTotale);
+if(chilometriUtente <= 9288.2){
+    // effettuo controlli sull'età dell'utente
 
-// prezzoTotale = prezzoTotale.toFixed(2)
-// console.log(prezzoTotale)
+    if(etàUtente < 0 || etàUtente > 120){
+        alert("Errore. L'età inserita non può essere accettata. Ti invitiamo a ricaricare la pagina.")
+    }else {
+
+        // calcolo prezzo totale in base ai chilometri
+
+        let prezzoTotale = 0.21 * chilometriUtente;
+        console.log(prezzoTotale);
+
+        // prezzoTotale = prezzoTotale.toFixed(2)
+        // console.log(prezzoTotale)
 
 
 
 
-// applico sconto se minore di 18 anni o maggiore di 65
+        // applico sconto se minore di 18 anni o maggiore di 65
 
-if(etàUtente <= 18){
-    prezzoTotale = prezzoTotale - (prezzoTotale * 20) / 100;
-} else if(etàUtente >= 65){
-    prezzoTotale = prezzoTotale - (prezzoTotale * 40) / 100;
+        if(etàUtente <= 18){
+            prezzoTotale = prezzoTotale - (prezzoTotale * 20) / 100;
+        } else if(etàUtente >= 65){
+            prezzoTotale = prezzoTotale - (prezzoTotale * 40) / 100;
+        }
+
+
+        console.log(prezzoTotale);
+
+
+        // mostro la cifra all'utente
+
+        const preventivo = document.getElementById("preventivo");
+
+        preventivo.innerHTML = `${prezzoTotale}€`;
+        console.log(preventivo);
+
+
+    }
+
+}else{
+    alert("Errore. La tratta ferroviaria più lunga al mondo è la Transiberiana con i suoi 9288.2km. La invitiamo a ricaricare la pagina.")
 }
 
 
-console.log(prezzoTotale);
-
-
-// mostro la cifra all'utente
-
-const preventivo = document.getElementById("preventivo");
-
-preventivo.innerHTML = `${prezzoTotale}€`;
-console.log(preventivo);
