@@ -28,13 +28,18 @@ console.log(prezzoTotale);
 
 const preventivo = document.getElementById("preventivo");
 
-// applico sconto se minore di 18 anni
+// applico sconto se minore di 18 anni o maggiore di 65
 
 if(etàUtente <= 18){
     prezzoTotale = prezzoTotale - (prezzoTotale * 20) / 100;
+} else if(etàUtente >= 65){
+    prezzoTotale = prezzoTotale - (prezzoTotale * 40) / 100;
 }
 
-console.log(prezzoTotale)
+
+console.log(prezzoTotale);
+
+
 
 
 preventivo.innerHTML = prezzoTotale;
