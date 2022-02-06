@@ -11,56 +11,66 @@ L’esercizio richiede di fare un minimo di controlli sui dati inseriti dall’u
 
 // chiedere all'utente di inserire i dati
 
-const chilometriUtente = prompt("Inserisci il numero dei chilometri che vorresti percorrere");
+const chilometriUtente = parseFloat (prompt("Inserisci il numero dei chilometri che vorresti percorrere"));
 console.log(chilometriUtente);
 
-const etàUtente = prompt("Inserisci la tua età");
+const etàUtente = parseFloat (prompt("Inserisci la tua età"));
 console.log(etàUtente);
 
-// effettuo controlli sulla validità dei chilometri inseriti
+// effettuo controlli sulla tipologia dei dati inseriti
 
-if(chilometriUtente <= 9288.2){
-    // effettuo controlli sull'età dell'utente
+if(isNaN(chilometriUtente) || isNaN(etàUtente)){
+    alert("Hai sbagliato la tipologia dei dati inseriti: uno dei due non era un numero. Ricarica la pagina per riprovare.")
+} else{
+    // effettuo controlli sulla validità dei chilometri inseriti
 
-    if(etàUtente < 0 || etàUtente > 120){
-        alert("Errore. L'età inserita non può essere accettata. Ti invitiamo a ricaricare la pagina.")
-    }else {
+    if(chilometriUtente <= 9288.2){
+        
+        // effettuo controlli sull'età dell'utente
 
-        // calcolo prezzo totale in base ai chilometri
+        if(etàUtente < 0 || etàUtente > 120){
+            alert("Errore. L'età inserita non può essere accettata. Ti invitiamo a ricaricare la pagina.")
+        }else {
 
-        let prezzoTotale = 0.21 * chilometriUtente;
-        console.log(prezzoTotale);
+            // calcolo prezzo totale in base ai chilometri
 
-        // prezzoTotale = prezzoTotale.toFixed(2)
-        // console.log(prezzoTotale)
+            let prezzoTotale = 0.21 * chilometriUtente;
+            console.log(prezzoTotale);
+
+             
 
 
 
+            // applico sconto se minore di 18 anni o maggiore di 65
 
-        // applico sconto se minore di 18 anni o maggiore di 65
+            if(etàUtente <= 18){
+                prezzoTotale = prezzoTotale - (prezzoTotale * 20) / 100;
+            } else if(etàUtente >= 65){
+                prezzoTotale = prezzoTotale - (prezzoTotale * 40) / 100;
+            }
 
-        if(etàUtente <= 18){
-            prezzoTotale = prezzoTotale - (prezzoTotale * 20) / 100;
-        } else if(etàUtente >= 65){
-            prezzoTotale = prezzoTotale - (prezzoTotale * 40) / 100;
+
+            console.log(prezzoTotale);
+
+
+            prezzoTotale = prezzoTotale.toFixed(2);
+             console.log(prezzoTotale);
+
+
+
+            // mostro la cifra all'utente
+
+            const preventivo = document.getElementById("preventivo");
+
+            preventivo.innerHTML = `${prezzoTotale}€`;
+            console.log(preventivo);
+
+
         }
 
-
-        console.log(prezzoTotale);
-
-
-        // mostro la cifra all'utente
-
-        const preventivo = document.getElementById("preventivo");
-
-        preventivo.innerHTML = `${prezzoTotale}€`;
-        console.log(preventivo);
-
-
+    }else{
+        alert("Errore. La tratta ferroviaria più lunga al mondo è la Transiberiana con i suoi 9288.2km. La invitiamo a ricaricare la pagina.")
     }
 
-}else{
-    alert("Errore. La tratta ferroviaria più lunga al mondo è la Transiberiana con i suoi 9288.2km. La invitiamo a ricaricare la pagina.")
 }
-
 
